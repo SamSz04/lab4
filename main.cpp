@@ -1,6 +1,6 @@
-#include <stdio.h>
-#include <math.h>
-#include <stdlib.h>
+#include <cstdio>
+#include <cmath>
+#include <cstdlib>
 #include <iostream>
 #include <fstream>
 #include <vector>
@@ -14,21 +14,23 @@ void run_testcase(string testcasename) {
 
     BinaryDimonTree *tree = new BinaryDimonTree();
     testcase >> *tree;
-
-
-    int testNum;
+    //这一步完成了树的构建！
+    long long int testNum = 0;
     testcase >> testNum;
     bool res = true;
-    for (int i = 0; i < testNum; i++) {
-        int x, y, z, w;
+    for (long long int i = 0; i < testNum; i++) {
+        long long int x, y, z, w;
         testcase >> x;
         testcase >> y;
+        //(x,y)是目标点
         testcase >> z;
         testcase >> w;
+        //(z,w)是用户输入的离目标点最近的点
         TreeNode *node = tree->find_nearest_node(x, y);
         if (z == node->getX() && w == node->getY()) {
 
-        } else {
+        }
+        else {
             cout << "case:" << x << " " << y << ",";
             cout << "expect:" << z << " " << w << ",";
             cout << "actual:" << node->getX() << " " << node->getY() << endl;
@@ -53,7 +55,7 @@ int main() {
     run_testcase("1.txt");
     run_testcase("2.txt");
     run_testcase("3.txt");
-
+    run_testcase("4.txt");
     /* There are ten extra testcases on canvas */
     /* You are supposed to pass all of those ten testcases to get full grade */
     // for (int i = 1; i <= 10; ++i) {
